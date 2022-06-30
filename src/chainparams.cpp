@@ -124,12 +124,9 @@ public:
         assert(consensus.hashGenesisBlock == uint256S("0x00043e9c6bc54d9bd266c3767a83a7b9da435dd7f84e485a2bf2a869be62f1f3"));
         assert(genesis.hashMerkleRoot == uint256S("0x04363330f08f5ec5601c7883855986a75707a05c1d3dee5ebb8b21bf44c3aae0"));
 
-        vSeeds.emplace_back("118.193.69.172");
-        vSeeds.emplace_back("49.234.213.233");
-        vSeeds.emplace_back("seed.bitwebcore.info");
-        vSeeds.emplace_back("seed1.bitwebcore.info");
-        vSeeds.emplace_back("seed.bitwebcore.org");
-        vSeeds.emplace_back("seed1.bitwebcore.org");
+        vSeeds.emplace_back("seed.bitwebcore.net");
+        vSeeds.emplace_back("seed1.bitwebcore.net");
+        vSeeds.emplace_back("seed2.bitwebcore.net");
         vSeeds.emplace_back("seedbitweb.scalaris.info");
         vSeeds.emplace_back("seedbitweb2.scalaris.info");
 
@@ -221,8 +218,6 @@ public:
 
         vFixedSeeds.clear();
         vSeeds.clear();
-        // nodes with support for servicebits filtering should be at the top
-        vSeeds.emplace_back("118.193.69.172");
 		
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,66);  // legacy: starting with T (upper)
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,196);
