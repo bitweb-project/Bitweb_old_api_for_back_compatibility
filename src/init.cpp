@@ -532,7 +532,7 @@ std::string HelpMessage(HelpMessageMode mode)
 std::string LicenseInfo()
 {
     const std::string URL_SOURCE_CODE = "<https://github.com/bitweb-project/bitweb>";
-    const std::string URL_WEBSITE = "<https://bitwebcore.org>";
+    const std::string URL_WEBSITE = "<https://bitwebcore.net>";
 
     // BEGIN - Adding Additional CopyrightHolders (1/2)
     const std::string Copyright_1 = strprintf(_("Copyright (C) %i-%i"), 2009, 2010) + " " + "Satoshi Nakamoto";
