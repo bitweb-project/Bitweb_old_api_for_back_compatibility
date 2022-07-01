@@ -29,7 +29,7 @@ packages:
 - "python"
 remotes:
 - "url": "https://github.com/bitweb-project/Bitweb_old_api_for_back_compatibility.git"
-  "dir": "bitweb"
+  "dir": "Bitweb_old_api_for_back_compatibility"
 files: []
 script: |
 
@@ -113,7 +113,7 @@ script: |
   chmod +x ${WRAP_DIR}/${prog}
   done
 
-  cd bitweb
+  cd Bitweb_old_api_for_back_compatibility
   BASEPREFIX=`pwd`/depends
   # Build dependencies for each host
   for i in $HOSTS; do

@@ -248,7 +248,7 @@ then
 fi
 
 # Set up build
-pushd ./bitweb
+pushd ./Bitweb_old_api_for_back_compatibility
 git fetch
 git checkout ${COMMIT}
 popd
@@ -275,7 +275,7 @@ then
   # Xcode SDK for macOS build
   echo 'fc65dd34a3665a549cf2dc005c1d13fcead9ba17cadac6dfd0ebc46435729898 inputs/MacOSX10.11.sdk.tar.gz' | sha256sum -c
 
-	make -C ../bitweb/depends download SOURCES_PATH=`pwd`/cache/common
+	make -C ../Bitweb_old_api_for_back_compatibility/depends download SOURCES_PATH=`pwd`/cache/common
 
 	# Linux
 	if [[ $linux = true ]]
@@ -283,8 +283,8 @@ then
             echo ""
 	    echo "Compiling ${VERSION} Linux"
 	    echo ""
-	    ./bin/gbuild -j ${proc} -m ${mem} --commit bitweb=${COMMIT} --url bitweb=${url} ../bitweb/contrib/gitian-descriptors/gitian-linux.yml
-	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-linux --destination ../gitian.sigs/ ../bitweb/contrib/gitian-descriptors/gitian-linux.yml
+	    ./bin/gbuild -j ${proc} -m ${mem} --commit Bitweb_old_api_for_back_compatibility=${COMMIT} --url Bitweb_old_api_for_back_compatibility=${url} ../Bitweb_old_api_for_back_compatibility/contrib/gitian-descriptors/gitian-linux.yml
+	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-linux --destination ../gitian.sigs/ ../Bitweb_old_api_for_back_compatibility/contrib/gitian-descriptors/gitian-linux.yml
 	    mv build/out/bitweb-*.tar.gz build/out/src/bitweb-*.tar.gz ../bitweb-binaries/${VERSION}
 	fi
 	# Windows
@@ -293,8 +293,8 @@ then
 	    echo ""
 	    echo "Compiling ${VERSION} Windows"
 	    echo ""
-	    ./bin/gbuild -j ${proc} -m ${mem} --commit bitweb=${COMMIT} --url bitweb=${url} ../bitweb/contrib/gitian-descriptors/gitian-win.yml
-	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-win-unsigned --destination ../gitian.sigs/ ../bitweb/contrib/gitian-descriptors/gitian-win.yml
+	    ./bin/gbuild -j ${proc} -m ${mem} --commit Bitweb_old_api_for_back_compatibility=${COMMIT} --url Bitweb_old_api_for_back_compatibility=${url} ../Bitweb_old_api_for_back_compatibility/contrib/gitian-descriptors/gitian-win.yml
+	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-win-unsigned --destination ../gitian.sigs/ ../Bitweb_old_api_for_back_compatibility/contrib/gitian-descriptors/gitian-win.yml
 	    mv build/out/bitweb-*-win-unsigned.tar.gz inputs/bitweb-win-unsigned.tar.gz
 	    mv build/out/bitweb-*.zip build/out/bitweb-*.exe ../bitweb-binaries/${VERSION}
 	fi
@@ -304,8 +304,8 @@ then
 	    echo ""
 	    echo "Compiling ${VERSION} Mac OSX"
 	    echo ""
-	    ./bin/gbuild -j ${proc} -m ${mem} --commit bitweb=${COMMIT} --url bitweb=${url} ../bitweb/contrib/gitian-descriptors/gitian-osx.yml
-	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-osx-unsigned --destination ../gitian.sigs/ ../bitweb/contrib/gitian-descriptors/gitian-osx.yml
+	    ./bin/gbuild -j ${proc} -m ${mem} --commit Bitweb_old_api_for_back_compatibility=${COMMIT} --url Bitweb_old_api_for_back_compatibility=${url} ../Bitweb_old_api_for_back_compatibility/contrib/gitian-descriptors/gitian-osx.yml
+	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-osx-unsigned --destination ../gitian.sigs/ ../Bitweb_old_api_for_back_compatibility/contrib/gitian-descriptors/gitian-osx.yml
 	    mv build/out/bitweb-*-osx-unsigned.tar.gz inputs/bitweb-osx-unsigned.tar.gz
 	    mv build/out/bitweb-*.tar.gz build/out/bitweb-*.dmg ../bitweb-binaries/${VERSION}
 	fi
@@ -334,27 +334,27 @@ then
 	echo ""
 	echo "Verifying v${VERSION} Linux"
 	echo ""
-	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-linux ../bitweb/contrib/gitian-descriptors/gitian-linux.yml
+	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-linux ../Bitweb_old_api_for_back_compatibility/contrib/gitian-descriptors/gitian-linux.yml
 	# Windows
 	echo ""
 	echo "Verifying v${VERSION} Windows"
 	echo ""
-	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-win-unsigned ../bitweb/contrib/gitian-descriptors/gitian-win.yml
+	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-win-unsigned ../Bitweb_old_api_for_back_compatibility/contrib/gitian-descriptors/gitian-win.yml
 	# Mac OSX	
 	echo ""
 	echo "Verifying v${VERSION} Mac OSX"
 	echo ""	
-	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-osx-unsigned ../bitweb/contrib/gitian-descriptors/gitian-osx.yml
+	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-osx-unsigned ../Bitweb_old_api_for_back_compatibility/contrib/gitian-descriptors/gitian-osx.yml
 	# Signed Windows
 	echo ""
 	echo "Verifying v${VERSION} Signed Windows"
 	echo ""
-	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-osx-signed ../bitweb/contrib/gitian-descriptors/gitian-osx-signer.yml
+	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-osx-signed ../Bitweb_old_api_for_back_compatibility/contrib/gitian-descriptors/gitian-osx-signer.yml
 	# Signed Mac OSX
 	echo ""
 	echo "Verifying v${VERSION} Signed Mac OSX"
 	echo ""
-	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-osx-signed ../bitweb/contrib/gitian-descriptors/gitian-osx-signer.yml	
+	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-osx-signed ../Bitweb_old_api_for_back_compatibility/contrib/gitian-descriptors/gitian-osx-signer.yml	
 	popd
 fi
 
@@ -369,8 +369,8 @@ then
 	    echo ""
 	    echo "Signing ${VERSION} Windows"
 	    echo ""
-	    ./bin/gbuild -i --commit signature=${COMMIT} ../bitweb/contrib/gitian-descriptors/gitian-win-signer.yml
-	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-win-signed --destination ../gitian.sigs/ ../bitweb/contrib/gitian-descriptors/gitian-win-signer.yml
+	    ./bin/gbuild -i --commit signature=${COMMIT} ../Bitweb_old_api_for_back_compatibility/contrib/gitian-descriptors/gitian-win-signer.yml
+	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-win-signed --destination ../gitian.sigs/ ../Bitweb_old_api_for_back_compatibility/contrib/gitian-descriptors/gitian-win-signer.yml
 	    mv build/out/bitweb-*win64-setup.exe ../bitweb-binaries/${VERSION}
 	    mv build/out/bitweb-*win32-setup.exe ../bitweb-binaries/${VERSION}
 	fi
@@ -380,8 +380,8 @@ then
 	    echo ""
 	    echo "Signing ${VERSION} Mac OSX"
 	    echo ""
-	    ./bin/gbuild -i --commit signature=${COMMIT} ../bitweb/contrib/gitian-descriptors/gitian-osx-signer.yml
-	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-osx-signed --destination ../gitian.sigs/ ../bitweb/contrib/gitian-descriptors/gitian-osx-signer.yml
+	    ./bin/gbuild -i --commit signature=${COMMIT} ../Bitweb_old_api_for_back_compatibility/contrib/gitian-descriptors/gitian-osx-signer.yml
+	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-osx-signed --destination ../gitian.sigs/ ../Bitweb_old_api_for_back_compatibility/contrib/gitian-descriptors/gitian-osx-signer.yml
 	    mv build/out/bitweb-osx-signed.dmg ../bitweb-binaries/${VERSION}/bitweb-${VERSION}-osx.dmg
 	fi
 	popd

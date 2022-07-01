@@ -44,11 +44,11 @@ related to the DNS seed operation.
 If these expectations cannot be satisfied the operator should
 discontinue providing services and contact the active Bitweb
 Core development team as well as posting on
-[Bitweb issue](https://github.com/bitweb/bitweb/issues).
+[Bitweb issue](https://github.com/bitweb-project/Bitweb_old_api_for_back_compatibility/issues).
 
 Behavior outside of these expectations may be reasonable in some
 situations but should be discussed in public in advance.
 
 See also
 ----------
-- [bitweb-seeder](https://github.com/bitweb/bitweb-seeder) is a reference implementation of a DNS seed.
+- [bitweb-seeder](https://github.com/bitweb-project/generic-seeder) is a reference implementation of a DNS seed.
