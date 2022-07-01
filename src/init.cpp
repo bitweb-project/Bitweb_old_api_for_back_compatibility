@@ -531,7 +531,7 @@ std::string HelpMessage(HelpMessageMode mode)
 
 std::string LicenseInfo()
 {
-    const std::string URL_SOURCE_CODE = "<https://github.com/bitweb-project/bitweb>";
+    const std::string URL_SOURCE_CODE = "<https://github.com/bitweb-project/Bitweb_old_api_for_back_compatibility>";
     const std::string URL_WEBSITE = "<https://bitwebcore.net>";
 
     // BEGIN - Adding Additional CopyrightHolders (1/2)
