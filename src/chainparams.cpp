@@ -77,8 +77,8 @@ public:
         consensus.BIP16Height = 0;
         consensus.BIP34Height = 17;
         consensus.BIP34Hash = uint256S("0x001ea0da3586f06aa32de50b9764eec2eaba2274191771ad536092d4f9f90fa9");
-        consensus.BIP65Height = 0;
-        consensus.BIP66Height = 0;
+        consensus.BIP65Height = 1;
+        consensus.BIP66Height = 1;
         consensus.powLimit = uint256S("0x001fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
         consensus.nPowTargetTimespan = 60 * 60;
         consensus.nPowTargetSpacing = 60;
@@ -102,10 +102,10 @@ public:
         consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nTimeout = Consensus::BIP9Deployment::NO_TIMEOUT;
 
         // The best chain should have at least this much work.
-        consensus.nMinimumChainWork = uint256S("0x00000000000000000000000000000000000000000000000000000015e19c1ad1");
+        consensus.nMinimumChainWork = uint256S("0x0000000000000000000000000000000000000000000000000000468939a4a704");
 
         // By default assume that the signatures in ancestors of this block are valid.
-        consensus.defaultAssumeValid = uint256S("0x0000000d7c7c25d0e2a8a8ff4013ae7154ba2d0c0217dc71b942f41af7be990a"); // 606942
+        consensus.defaultAssumeValid = uint256S("0x0000040a3e7b559aea417d3f886c0e8fe69f1f0530800424b9ea739b1f2c8498"); // 939796
 
         /**
          * The message start string is designed to be unlikely to occur in normal data.
@@ -151,15 +151,16 @@ public:
                 {9074, uint256S("0x0000007e1d70d529752b87fe47f979ae5f8f27bbc987dd0c8b21c9c5a6f3099b")},
                 {12167, uint256S("0x0000006fa4023de2a1d4bd712e7d7aafa15a273f6c78b32bd87185846e0cc903")},
                 {606942, uint256S("0x0000000d7c7c25d0e2a8a8ff4013ae7154ba2d0c0217dc71b942f41af7be990a")},
+                {939796, uint256S("0x0000040a3e7b559aea417d3f886c0e8fe69f1f0530800424b9ea739b1f2c8498")},
             }
         };
 
         chainTxData = ChainTxData{
             // Data as of block height 1000000 from 'getchaintxstats' command
-            1656653649, // * UNIX timestamp of last known number of transactions
-               655420, // * total number of transactions between genesis and that timestamp
+            1676764796, // * UNIX timestamp of last known number of transactions
+               1026099, // * total number of transactions between genesis and that timestamp
                         //   (the tx=... number in the SetBestChain debug.log lines)
-            0.01807233830764586  // * estimated number of transactions per second after that timestamp
+            0.01743655840760691  // * estimated number of transactions per second after that timestamp
         };
     }
 };
