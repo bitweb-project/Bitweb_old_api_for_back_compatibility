@@ -183,11 +183,16 @@ def main():
             os.environ['GITIAN_HOST_IP'] = '10.0.3.1'
         if not 'LXC_GUEST_IP' in os.environ.keys():
             os.environ['LXC_GUEST_IP'] = '10.0.3.5'
-
+        
     # Disable for MacOS if no SDK found
     if args.macos and not os.path.isfile('gitian-builder/inputs/MacOSX10.11.sdk.tar.gz'):
-        print('Cannot build for MacOS, SDK does not exist. Will build for other OSes')
-        args.macos = False
+        print('MacOS, SDK does not exist at inputs. trying to download')
+        subprocess.check_call(['wget', '-O', 'gitian-builder/inputs/MacOSX10.11.sdk.tar.gz', 'https://bitcoincore.org/depends-sources/sdks/MacOSX10.11.sdk.tar.gz'])
+        subprocess.check_call(["echo 'bec9d089ebf2e2dd59b1a811a38ec78ebd5da18cbbcd6ab39d1e59f64ac5033f gitian-builder/inputs/MacOSX10.11.sdk.tar.gz' | sha256sum -c"], shell=True)
+
+    if args.macos and os.path.isfile('gitian-builder/inputs/MacOSX10.11.sdk.tar.gz'):
+        print('SHA256SUM check macOS, SDK')
+        subprocess.check_call(["echo 'bec9d089ebf2e2dd59b1a811a38ec78ebd5da18cbbcd6ab39d1e59f64ac5033f gitian-builder/inputs/MacOSX10.11.sdk.tar.gz' | sha256sum -c"], shell=True)
 
     script_name = os.path.basename(sys.argv[0])
     # Signer and version shouldn't be empty
